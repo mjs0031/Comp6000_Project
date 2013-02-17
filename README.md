@@ -39,40 +39,40 @@ Comp6000_Project
  						
      Files in "Comp6000/#Documents" ::
  
-  	  "Comp6000 - Proposal.doc" -- the proposal
+       "Comp6000 - Proposal.doc" -- the proposal
  	
-  	  {Other files to be added including, but not limited to, project specs.}
+       {Other files to be added including, but not limited to, project specs.}
  
      Files in "Comp600/Comp6000" ::
  	 
-     "/settings.py" -- I'll make the 3-4 changes here. It's a delicate
+       "/settings.py" -- I'll make the 3-4 changes here. It's a delicate
  			                file and we don't need to do much with. Autorun basically.
  			
- 	   "/urls.py"     -- This is where our URL schemes go. This'll be
+       "/urls.py"     -- This is where our URL schemes go. This'll be
  			                light-weight. It'll tie the views, URL's and HTML together.
  			
- 	   "/wsgi.py"     -- Better not to touch it. I generally leave it be.
+       "/wsgi.py"     -- Better not to touch it. I generally leave it be.
  	
  	
      Files in "Comp600/Control" ::
  	
-     "/fixtures"    -- {includes readme.txt}; storage for *.json files
+       "/fixtures"    -- {includes readme.txt}; storage for *.json files
  	
- 	   "/templates"   -- {inclused readme.txt}; storage for HTML docs
+       "/templates"   -- {inclused readme.txt}; storage for HTML docs
   	
-  	  "/admin.py"    -- admin site setup; visited by running the server;
+       "/admin.py"    -- admin site setup; visited by running the server;
  				  		'localhost:8000/admin'
  						
  						
      Files in "Comp6000/Data_Base" ::
  	 
-     "/models.py"   -- Database tables; setup via Object Relational Mapping;
+       "/models.py"   -- Database tables; setup via Object Relational Mapping;
  				            		think of the tables as class outlines in OOP, that
  						            analogy helped me
  						
- 	   "/test.py"     -- Unittesting framework for verification and validation;
+       "/test.py"     -- Unittesting framework for verification and validation;
  				            		cause I'm lazy; set it up and run her.
  						
- 	   "/views.py"    -- control for queries. basically this is the glue between
+       "/views.py"    -- control for queries. basically this is the glue between
  				            		the HTLM and the tables declared in 'models.py'
  
