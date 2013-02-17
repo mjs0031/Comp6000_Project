@@ -14,8 +14,9 @@ Comp6000_Project
  functionality for the data will exist within "Data_Base/models.py".
  
  Files in "Comp600" ::
-   "/manage.py"   -- control script. Any command line interaction
- 			uses this script :
+ 
+    "/manage.py"   -- control script. Any command line interaction
+ 	 		uses this script :
  				'$ python manage.py shell'
  					- opens a shell to the DB
  					
