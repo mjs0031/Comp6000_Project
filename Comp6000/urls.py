@@ -1,17 +1,31 @@
-from django.conf.urls import patterns, include, url
+""" Python Package Support """
+# Not applicable
 
-# Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
+""" Django Package Support """
+from django.conf.urls import patterns, include, url
+from django.contrib import admin
+
+""" Internal Package Support """
+# Not applicable
+
+"""
+ Comp6000/urls.py
+ Author:      Matthew J Swann
+ Version:     1.0
+ Last Update: 2013-03-20
+ Update By:   Matthew J Swann
+ 
+ 
+ URL settings
+
+ """
+ 
+
+admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'Comp6000.views.home', name='home'),
-    # url(r'^Comp6000/', include('Comp6000.foo.urls')),
-
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
+    
+    # ADMIN PAGES
+    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    url(r'^admin/', include(admin.site.urls)),
 )
