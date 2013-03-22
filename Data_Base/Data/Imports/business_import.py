@@ -9,9 +9,9 @@ from Data_Base.models import Business
 
 """
  Data_Base/Data/Imports/business_import.py
- Author:      Matthew J Swann
+ Author:      Matthew J Swann; Yong Kin; Bradon Atkins; Adam Carter
  Version:     1.0
- Last Update: 2013-03-20
+ Last Update: 2013-03-22
  Update By:   Matthew J Swann
  
  
