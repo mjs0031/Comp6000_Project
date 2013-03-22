@@ -11,9 +11,9 @@ from django.contrib import admin
 """
 
  Control/admin.py
- Author(s)    : Matthew J Swann; Yong Kin; Bradon Atkins
+ Author(s)    : Matthew J Swann; Yong Kin; Bradon Atkins; Adam Carter
  Version      : 1.0
- Last Revised : 2013-02-17
+ Last Revised : 2013-03-22
  Update By    : Matthew J Swann
  
  Code for the Django admin site.
@@ -41,8 +41,8 @@ class PersonAdmin(admin.ModelAdmin):
     fieldsets     = (               
         ( 'Advanced options', {
             'classes': ('wide', 'extrapretty'),
-            'fields' : ('last_name', 'first_name', 'business', 'address_line_one', 'address_line_two',
-                        'city', 'state', 'zip_code', 'date_registered')
+            'fields' : ('last_name', 'first_name', 'business', 'address_line_one', 
+                        'address_line_two', 'city', 'state', 'zip_code', 'date_registered')
                  }),)
 
 class SchoolAdmin(admin.ModelAdmin):

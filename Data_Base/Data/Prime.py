@@ -13,9 +13,9 @@ from Data_Base.Data.Imports.child_import import ChildImport
 """
 
  Data_Base/Data/Prime.py
- Author(s)    : Matthew J Swann; Yong Kin; Bradon Atkins
+ Author(s)    : Matthew J Swann; Yong Kin; Bradon Atkins; Adam Carter
  Version      : 1.0
- Last Revised : 2013-03-20
+ Last Revised : 2013-03-22
  Update By    : Matthew J Swann
  
  Primary data import scheme.
