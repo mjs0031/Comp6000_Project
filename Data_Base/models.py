@@ -5,8 +5,10 @@ from datetime import date, datetime, date, timedelta
 """ Django Package Imports """
 from django.db import models
 from django.contrib.localflavor.us import models as us_models
+from django.core import serializers
 from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
+from django.db.models.query import QuerySet
 
 """ Internal Package Imports """
 # Not Applicable
@@ -56,20 +58,6 @@ class Business(models.Model):
     class Meta:
         verbose_name        = "Business"
         verbose_name_plural = "Businesses"
-        
-        
-    """
-     Converts the current Business object to string form for XML storage.
-     
-     @param param: 
-     
-     @return: 
-     
-     @raise exception: 
-     """
-    def to_string(self):
-        # Turns a Business object into string for XML storage
-        pass
     
         
 class OrderedBusiness(Business):
@@ -102,20 +90,6 @@ class School(models.Model):
     class Meta:
         verbose_name        = "School"
         verbose_name_plural = "Schools"
-        
-        
-    """
-     Converts the current School object to string form for XML storage.
-     
-     @param param: 
-     
-     @return: 
-     
-     @raise exception: 
-     """
-    def to_string(self):
-        # Turns a School object into string for XML storage
-        pass
     
 
 class OrderedSchool(School):
@@ -151,20 +125,6 @@ class Person(models.Model):
     class Meta:
         verbose_name        = "Person"
         verbose_name_plural = "People"
-        
-        
-    """
-     Converts the current Person object to string form for XML storage.
-     
-     @param param: 
-     
-     @return: 
-     
-     @raise exception: 
-     """
-    def to_string(self):
-        # Turns a Person object into string for XML storage
-        pass
     
     
 class OrderedPerson(Person):
@@ -194,20 +154,6 @@ class Child(models.Model):
     class Meta:
         verbose_name        = "Child"
         verbose_name_plural = "Children"
-        
-        
-    """
-     Converts the current Child object to string form for XML storage.
-     
-     @param param: 
-     
-     @return: 
-     
-     @raise exception: 
-     """
-    def to_string(self):
-        # Turns a Child object into string for XML storage
-        pass
  
     
 class OrderedChild(Child):
@@ -216,3 +162,26 @@ class OrderedChild(Child):
         verbose_name_plural = "Ordered Children"
         ordering            = ['last_name', 'first_name']
         proxy               = True
+        
+"""
+ Serializes an entire query set into XML form and saves the file with a
+ time-stamped name.
+ 
+ @param query_set : Query set to be serialized. Arrives un-validated.
+ 
+ @raise ValidationError: Raised if query_set is not of type QuerySet.
+ """
+def query_to_xml(query_set):
+    if not isinstance(query_set, QuerySet):
+        raise ValidationError('query_to_xml() requires type QuerySet')
+    XMLSerializer  = serializers.get_serializer('xml')
+    xml_serializer = XMLSerializer()
+    timestamp      = datetime.now()
+    path           = 'Control/fixtures/xml/%s_%s_%s_%s_%s_%s.xml' % ( timestamp.year,
+                                                                      timestamp.month,
+                                                                      timestamp.day,
+                                                                      timestamp.hour,
+                                                                      timestamp.minute,
+                                                                      timestamp.second )
+    output         = open(path, 'w')
+    xml_serializer.serialize(query_set, stream=output)
