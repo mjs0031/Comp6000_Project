@@ -11,10 +11,15 @@ from django.contrib import admin
 """
 
  Control/admin.py
- Author(s)    : Matthew J Swann; Yong Kin; Bradon Atkins; Adam Carter
- Version      : 1.0
- Last Revised : 2013-03-22
- Update By    : Matthew J Swann
+
+ Author:      Matthew J Swann; 
+              Yong Kin; 
+              Bradon Atkins; and 
+              Adam Carter
+              
+ Version:     1.0
+ Last Update: 2013-04-07
+ Update By:   Matthew J Swann
  
  Code for the Django admin site.
  

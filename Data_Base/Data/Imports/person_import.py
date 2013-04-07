@@ -9,11 +9,15 @@ from Data_Base.models import Business, Person
 
 """
  Data_Base/Data/Imports/person_import.py
- Author:      Matthew J Swann; Yong Kin; Bradon Atkins; Adam Carter
+
+ Author:      Matthew J Swann; 
+              Yong Kin; 
+              Bradon Atkins; and 
+              Adam Carter
+              
  Version:     1.0
- Last Update: 2013-03-22
+ Last Update: 2013-04-07
  Update By:   Matthew J Swann
- 
  
  Importing data to the person table.
 
