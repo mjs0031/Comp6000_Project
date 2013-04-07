@@ -58,6 +58,13 @@ class Business(models.Model):
     class Meta:
         verbose_name        = "Business"
         verbose_name_plural = "Businesses"
+
+    """
+     Transforms the entire Business table to serialized xml. This is callable
+     from any Business object and is ready for javascript API translation.
+     """
+    def table_to_string(self):
+        query_to_xml(Business.objects.all())
     
         
 class OrderedBusiness(Business):
@@ -90,7 +97,14 @@ class School(models.Model):
     class Meta:
         verbose_name        = "School"
         verbose_name_plural = "Schools"
-    
+
+    """
+     Transforms the entire school table to serialized xml. This is callable
+     from any School object and is ready for javascript API translation.
+     """
+    def table_to_string(self):
+        query_to_xml(School.objects.all())    
+
 
 class OrderedSchool(School):
     class Meta:
@@ -116,8 +130,7 @@ class Person(models.Model):
     zip_code             = models.CharField(max_length=10,
                                validators=[RegexValidator(r'^\d{5}(-\d{4})?$')])
     date_registered      = models.DateTimeField(default=datetime.now()) 
-    
-    
+     
     def __unicode__(self):
         name = '%s, %s:' % (self.last_name, self.first_name)
         return '%s, %s' % (name, self.date_registered)
@@ -125,6 +138,13 @@ class Person(models.Model):
     class Meta:
         verbose_name        = "Person"
         verbose_name_plural = "People"
+
+    """
+     Transforms the entire Person table to serialized xml. This is callable
+     from any Person object and is ready for javascript API translation.
+     """
+    def table_to_string(self):
+        query_to_xml(Person.objects.all())
     
     
 class OrderedPerson(Person):
@@ -154,7 +174,14 @@ class Child(models.Model):
     class Meta:
         verbose_name        = "Child"
         verbose_name_plural = "Children"
- 
+
+    """
+     Transforms the entire Child table to serialized xml. This is callable
+     from any Business object and is ready for javascript API translation.
+     """
+    def table_to_string(self):
+        query_to_xml(Child.objects.all()) 
+    
     
 class OrderedChild(Child):
     class Meta:

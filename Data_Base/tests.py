@@ -29,7 +29,10 @@ from Data_Base.models import (Business, School, Person, Child)
  
 class Test(TestCase):
     #fixtures = ['Control/fixtures/json/database_testdata.json']
-    fixtures = ['Control/fixtures/xml/business.xml']
+    fixtures = ['Control/fixtures/xml/2013_4_7_18_29_17.xml',
+                'Control/fixtures/xml/2013_4_7_18_29_21.xml',
+                'Control/fixtures/xml/2013_4_7_18_29_25.xml',
+                'Control/fixtures/xml/2013_4_7_18_29_30.xml']
     
     """
      {
