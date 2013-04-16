@@ -1,5 +1,5 @@
 """ Python Package Imports """
-# Not Applicable
+from datetime import datetime
 
 """ Django Package Imports """
 # Not Applicable
@@ -20,7 +20,7 @@ from Data_Base.Data.Imports.child_import import ChildImport
               Adam Carter
               
  Version:     1.0
- Last Update: 2013-04-07
+ Last Update: 2013-04-15
  Update By:   Matthew J Swann
  
  Primary data import scheme.
@@ -29,11 +29,13 @@ from Data_Base.Data.Imports.child_import import ChildImport
 
 def main():
     
+    time_one = datetime.now()
     BusinessImport()
     SchoolImport()
     PersonImport()
     ChildImport()
-    
+    time_two = datetime.now()
+    print (time_two - time_one)
     
     
 if __name__ == '__main__':

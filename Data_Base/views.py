@@ -19,7 +19,7 @@ from Data_Base.models import (Business, School,
               Adam Carter
               
  Version:     1.0
- Last Update: 2013-04-12
+ Last Update: 2013-04-16
  Update By:   Matthew J Swann
  
  Code for the website queries/control.
