@@ -1,0 +1,82 @@
+<html xmlns = "http://www.w3.org/1999/xhtml">
+<head>
+	<title>Ajax Child Seach</title>
+	
+	<script type = "text/javascript" language = "JavaScript">
+	
+		<!--
+		
+		var asyncRequest;
+		
+		window.onload = function()
+		{
+			document.getElementById('search_button').onclick = function()
+			{
+				var search_string = document.getElementById('search_box').value;
+				
+				getContent('/search/child/' + search_string);	    
+			}
+		}
+		
+		function getContent(url)
+		{
+			try
+			{
+				asyncRequest = new XMLHttpRequest();
+				asyncRequest.onreadystatechange = stateChange;
+				asyncRequest.open('GET', url, true)
+				asyncRequest.send( null );
+			}
+			catch(exception)
+			{
+				alert('failed');
+			}
+		}
+		
+		function stateChange()
+		{
+			if ( asyncRequest.readyState == 4 && asyncRequest.status == 200 )
+			{
+				document.getElementById('search_results').innerHTML = 
+						 asyncRequest.responseText; 
+
+			}
+		}
+		-->
+	
+	</script>
+
+</head>
+
+<body>
+
+	<h1><b><i>Child: Search</i></b></h1>
+	
+	<hr>
+	<h3>Search for a child by last name:</h3>
+	<input type='text' size='20' id='search_box'>
+	</input>
+	<button id='search_button'>Find Child!</button>
+	
+	<hr>
+	<table id='search_results'>
+	
+	</table>
+
+	<br>
+	<br>
+	<hr>
+	<h3>Links ::</h3>
+	
+	<ul>
+		<li><a href="/">Return to Landing Page</li>
+		<br>		
+		<p><i>Search By ::</i></p>
+		<li><a href="/search/business/">Business</a></li>
+		<li><a href="/search/school/">School</a></li>
+		<li><a href="/search/person/">Person</a></li>
+		<br>
+		<li><a href="/search/global/">Entire Data Base</a></li>
+	</ul>
+	
+</body>

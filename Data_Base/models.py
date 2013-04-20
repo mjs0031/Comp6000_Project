@@ -11,7 +11,7 @@ from django.core.validators import RegexValidator
 from django.db.models.query import QuerySet
 
 """ Internal Package Imports """
-# Not Applicable
+from Control.choice_lists import SCHOOL_SET
 
 """
 
@@ -29,12 +29,6 @@ from django.db.models.query import QuerySet
  Code for the database tables and inherent functionality.
 
  """
-
-SCHOOL_SET = (
-    ('P', 'Primary'),
-    ('S', 'Secondary'),
-    ('C', 'Continuing Education'),
-        ) 
  
 """
  BUSINESS Class --

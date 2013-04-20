@@ -6,9 +6,7 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
 """ Internal Package Support """
-from Data_Base.views import (landing_page, search_global,
-                             search_business, search_school,
-                             search_person, search_child)
+# Imported below.
 
 """
  Comp6000/urls.py
@@ -18,7 +16,7 @@ from Data_Base.views import (landing_page, search_global,
               Adam Carter
               
  Version:     1.0
- Last Update: 2013-04-12
+ Last Update: 2013-04-20
  Update By:   Matthew J Swann
  
  
@@ -30,17 +28,34 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     
-    # ADMIN PAGES
+    # ACCESS PAGES
+    url(r'^$', 'Data_Base.view.homepage', name='homepage'),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
     
-    # ACCESS PAGES
-    url(r'^$', landing_page),
+    # COMMIT PAGES
+    url(r'^commit/business/$', 'Data_Base.views.commit_business', name='commit_business'),
+    url(r'^commit/school/$', 'Data_Base.views.commit_school', name='commit_school'),
+    url(r'^commit/person/$', 'Data_Base.views.commit_person', name='commit_person'),
+    url(r'^commit/child/$', 'Data_Base.views.commit_child', name='commit_child'),
     
     # SEARCH PAGES
-    url(r'^search/business/$', search_business),
-    url(r'^search/school/$', search_school),
-    url(r'^search/person/$', search_person),
-    url(r'^search/child/$', search_child),
-    url(r'^search/global/$', search_global),
+    url(r'^search/business/$', 'Data_Base.views.search_business', name='search_business'),
+    url(r'^search/school/$', 'Data_Base.views.search_school', name='search_school'),
+    url(r'^search/person/$', 'Data_Base.views.search_person', name='search_person'),
+    url(r'^search/child/$', 'Data_Base.views.search_child', name='search_child'),
+    url(r'^search/global/$', 'Data_Base.views.search_global', name='search_global'),
+    
+    url(r'^search/business/(\w+)/$', 'Data_Base.views.ajax_search_business', name='ajax_search_business'),
+    url(r'^search/school/(\w+)/$', 'Data_Base.views.ajax_search_school', name='ajax_search_school'),
+    url(r'^search/person/(\w+)/$', 'Data_Base.views.ajax_search_person', name='ajax_search_person'),
+    url(r'^search/child/(\w+)/$', 'Data_Base.views.ajax_search_child', name='ajax_search_child'),
+    url(r'^search/global/(\w+)/$', 'Data_Base.views.ajax_search_global', name='ajax_search_global'),
+    
+    # DISPLAY PAGES
+    url(r'^business/(\w+)/$', 'Data_Base.view.specific_business', name='specific_business'),
+    url(r'^school/(\w+)/$', 'Data_Base.view.specific_school', name='specific_school'),
+    url(r'^person/(\w+)/$', 'Data_Base.view.specific_person', name='specific_person'),    
+    url(r'^child/(\w+)/$', 'Data_Base.view.specific_child', name='specific_child'),
+
 )
