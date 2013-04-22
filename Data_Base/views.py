@@ -4,10 +4,13 @@
 """ Django Package Imports """
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, render
+from django.template import RequestContext
 
 """ Internal Package Imports """
-from Data_Base.models import (Business, School,
-                              Person,   Child)
+from Data_Base.models import (Business,     School,
+                              Person,       Child)
+from Data_Base.forms import  (BusinessForm, SchoolForm,
+                              PersonForm,   ChildForm)
 
 """
 
@@ -19,7 +22,7 @@ from Data_Base.models import (Business, School,
               Adam Carter
               
  Version:     1.0
- Last Update: 2013-04-20
+ Last Update: 2013-04-22
  Update By:   Matthew J Swann
  
  Code for the website queries/control.
@@ -31,7 +34,7 @@ from Data_Base.models import (Business, School,
 
 """
  {
-  Access Block
+  ACCESS BLOCK
  }
  """
 def homepage(request):
@@ -40,7 +43,61 @@ def homepage(request):
 
 """
  {
-  Query Block
+  COMMIT BLOCK
+ }
+ """
+def commit_business(request):
+    if request.method == 'POST':
+        form = BusinessForm(request.POST)
+        if form.is_valid():
+            pointer = form.save_data()
+            return HttpResponseRedirect('/business/%s' % (pointer.id))
+    else:
+        form = BusinessForm()
+    return render(request, 'add_business.html', RequestContext(request, {
+                                                    "form": form,                 
+                                                        }))
+    
+def commit_school(request):
+    if request.method == 'POST':
+        form = SchoolForm(request.POST)
+        if form.is_valid():
+            pointer = form.save_data()
+            return HttpResponseRedirect('/school/%s' % (pointer.id))
+    else:
+        form = SchoolForm()
+    return render(request, 'add_school.html', RequestContext(request, {
+                                                    "form": form,                 
+                                                        }))
+    
+def commit_person(request):
+    if request.method == 'POST':
+        form = PersonForm(request.POST)
+        if form.is_valid():
+            pointer = form.save_data()
+            return HttpResponseRedirect('/person/%s' % (pointer.id))
+    else:
+        form = PersonForm()
+    return render(request, 'add_person.html', RequestContext(request, {
+                                                    "form": form,                 
+                                                        }))
+
+def commit_child(request):
+    if request.method == 'POST':
+        form = ChildForm(request.POST)
+        if form.is_valid():
+            pointer = form.save_data()
+            return HttpResponseRedirect('/child/%s' % (pointer.id))
+    else:
+        form = ChildForm()
+    return render(request, 'add_child.html', RequestContext(request, {
+                                                    "form": form,                 
+                                                        }))
+
+
+"""
+ {
+  QUERY BLOCK
  }
  """
 def search_business(request):
