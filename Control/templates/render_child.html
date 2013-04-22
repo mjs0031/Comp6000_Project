@@ -1,0 +1,31 @@
+<html xmlns = "http://www.w3.org/1999/xhtml">
+<head>
+</head>
+
+<body>
+
+	<p><i>
+	{% if found %}
+		<h3><i>The following match your search criteria:</i></h3> 
+	{% else %}
+		<h3><i>No matching children were found.</i></h3>
+		<br>
+		<h3><i>These are all current known children.</i></h3> 
+	{% endif %}
+	</i></p>
+
+	<br>
+
+	<br>
+	{% for child in results %}
+	<hr>
+	<table>
+		<tr><td width="250"><i>Full Name ::</i></td><td width="750"><a href="/child/{{ child.id }}">{{ child.last_name }}, {{ child.first_name }}</a></td></tr>	
+		<tr><td><i>Child ID ::</i></td><td>{{ child.id }}</td></tr>
+		<tr><td><i>School ::</i></td><td><a href="/school/{{ child.school.id }}">{{ child.school.name }}</a></td></tr>
+	</table>
+	<br>
+	{% endfor %}
+	
+</body>
+</html>	

@@ -1,23 +1,11 @@
-<html xmlns = "http://www.w3.org/1999/xhtml">
+<html>
 <head>
+	<title>Person</title>
 </head>
 
 <body>
-
-	<p><i>
-	{% if found %}
-		<h3><i>The following match your search criteria:</i></h3> 
-	{% else %}
-		<h3><i>No matching people were found.</i></h3>
-		<br>
-		<h3><i>These are all current known people.</i></h3> 
-	{% endif %}
-	</i></p>
-
-	<br>
-
-	<br>
-	{% for person in results %}
+	<h1><i>Data_Base: Specific Person</i></h1>
+	
 	<hr>
 	<table>
 		<tr><td width="250"><i>Full Name ::</i></td><td width="750"><a href="/person/{{ person.id }}">{{ person.last_name }}, {{ person.first_name }}</a></td></tr>
@@ -28,8 +16,23 @@
 		<tr><td><i></i></td><td>{{ person.address_line_two }}</td></tr>
 		<tr><td><i></i></td><td>{{ person.city }}, {{ person.state }} {{ person.zip_code }}</td></tr>
 	</table>
-	<br>
-	{% endfor %}
 	
+	
+	<br>
+	<hr>
+	
+	<h3>Links ::</h3>
+	
+	<ul>
+		<li><a href="/">Return to Landing Page</a></li>
+		<br>		
+		<p><i>Search By ::</i></p>
+		<li><a href="/search/business/">Business</a></li>
+		<li><a href="/search/school/">School</a></li>
+		<li><a href="/search/person/">Person</a></li>
+		<li><a href="/search/child/">Child</a></li>
+		<br>
+		<li><a href="/search/global/">Entire Data Base</a></li>
+	</ul>
 </body>
-</html>	
+</html>

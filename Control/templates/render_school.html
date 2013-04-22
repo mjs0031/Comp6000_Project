@@ -1,0 +1,42 @@
+<html xmlns = "http://www.w3.org/1999/xhtml">
+<head>
+</head>
+
+<body>
+
+	<p><i>
+	{% if found %}
+		<h3><i>The following match your search criteria:</i></h3> 
+	{% else %}
+		<h3><i>No matching schools were found.</i></h3>
+		<br>
+		<h3><i>These are all current known schools.</i></h3> 
+	{% endif %}
+	</i></p>
+
+	<br>
+
+	<br>
+	{% for school in results %}
+	<hr>
+	<table>
+		<tr><td width="250"><i>School Name ::</i></td><td width="750"><a href="/school/{{ school.id }}">{{ school.name }}</a></td></tr>
+		<tr><td><i>School ID ::</i></td><td>{{ school.id }}</td></tr>
+		{% if school.education_level = 'P' %}
+					<tr><td><i>Education Level ::</i></td><td>Primary</td></tr>
+		{% elif school.education_level = 'S' %}
+					<tr><td><i>Education Level ::</i></td><td>Secondary</td></tr>
+		{% elif school.education_level = 'C' %}
+					<tr><td><i>Education Level ::</i></td><td>Primary</td></tr>
+		{% endif %}
+		<tr><td><i>Address ::</i></td><td>{{ school.address_line_one }}</td></tr>
+		<tr><td><i></i></td><td>{{ school.address_line_two }}</td></tr>
+		<tr><td><i></i></td><td>{{ school.city }}, {{ school.state }} {{ school.zip_code }}</td></tr>		
+		<tr><td><i>Phone ::</i></td><td>{{ school.phone }}</td></tr>
+		<tr><td><i>Relevant Notes ::</i></td><td>{{ school.notes }}</td></tr>
+	</table>
+	<br>
+	{% endfor %}
+	
+</body>
+</html>	

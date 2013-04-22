@@ -29,7 +29,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     
     # ACCESS PAGES
-    url(r'^$', 'Data_Base.view.homepage', name='homepage'),
+    url(r'^$', 'Data_Base.views.homepage', name='homepage'),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
     
@@ -53,9 +53,9 @@ urlpatterns = patterns('',
     url(r'^search/global/(\w+)/$', 'Data_Base.views.ajax_search_global', name='ajax_search_global'),
     
     # DISPLAY PAGES
-    url(r'^business/(\w+)/$', 'Data_Base.view.specific_business', name='specific_business'),
-    url(r'^school/(\w+)/$', 'Data_Base.view.specific_school', name='specific_school'),
-    url(r'^person/(\w+)/$', 'Data_Base.view.specific_person', name='specific_person'),    
-    url(r'^child/(\w+)/$', 'Data_Base.view.specific_child', name='specific_child'),
+    url(r'^business/(\w+)/$', 'Data_Base.views.specific_business', name='specific_business'),
+    url(r'^school/(\w+)/$', 'Data_Base.views.specific_school', name='specific_school'),
+    url(r'^person/(\w+)/$', 'Data_Base.views.specific_person', name='specific_person'),    
+    url(r'^child/(\w+)/$', 'Data_Base.views.specific_child', name='specific_child'),
 
 )

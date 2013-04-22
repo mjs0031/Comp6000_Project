@@ -1,6 +1,6 @@
 """ Python Package Imports """
 from itertools import chain
-from datetime import date, datetime, date, timedelta
+from datetime import date, datetime, date
 
 """ Django Package Imports """
 from django.db import models

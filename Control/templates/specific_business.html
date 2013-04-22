@@ -1,0 +1,60 @@
+<html>
+<head>
+	<title>Business</title>
+</head>
+
+<body>
+	<h1><i>Data_Base: Specific Business</i></h1>
+	
+	<hr>
+	<table>
+		<tr><td width="250"><i>Business Name ::</i></td><td width="750"><a href="/business/{{ business.id }}">{{ business.name }}</a></td></tr>
+		<tr><td><i>Business ID ::</i></td><td>{{ business.id }}</td></tr>
+		<tr><td><i>Address ::</i></td><td>{{ business.address_line_one }}</td></tr>
+		<tr><td><i></i></td><td>{{ business.address_line_two }}</td></tr>
+		<tr><td><i></i></td><td>{{ business.city }}, {{business.state}} {{ business.zip_code }}</td></tr>		
+		<tr><td><i>Phone ::</i></td><td>{{ business.phone }}</td></tr>
+		<tr><td width="150"><i>Description ::</i></td><td>{{ business.business_description }}</td></tr>
+		<br><br>
+		<tr><td><i>Relevant Notes ::</i></td><td>{{ business.notes }}</td></tr>
+	</table>
+	
+	
+	<br>
+	<hr>
+	<h3><i>Known Employees ::</i></h3>
+		{% if not found %}
+			<pre><p><i>            {No known employees for this company.}</i></p></pre>
+		{% endif %}
+		
+		{% for person in people %}
+		<table>
+			<tr><td width="250"><i>Full Name ::</i></td><td width="750"><a href="/person/{{ person.id }}">{{ person.last_name }}, {{ person.first_name }}</a></td></tr>
+			<tr><td><i>Date Registered :: </i></td><td>{{ person.date_registered }}</td></tr>		
+			<tr><td><i>Person ID ::</i></td><td>{{ person.id }}</td></tr>
+			<tr><td><i>Business ::</i></td><td><a href="/business/{{ person.business.id }}">{{ person.business.name }}</a></td></tr>		
+			<tr><td><i>Address ::</i></td><td>{{ person.address_line_one }}</td></tr>
+			<tr><td><i></i></td><td>{{ person.address_line_two }}</td></tr>
+			<tr><td><i></i></td><td>{{ person.city }}, {{ person.state }} {{ person.zip_code }}</td></tr>
+		</table>
+		<br>
+		<hr>
+		{% endfor %}
+
+	
+	
+	<h3>Links ::</h3>
+	
+	<ul>
+		<li><a href="/">Return to Landing Page</a></li>
+		<br>		
+		<p><i>Search By ::</i></p>
+		<li><a href="/search/business/">Business</a></li>
+		<li><a href="/search/school/">School</a></li>
+		<li><a href="/search/person/">Person</a></li>
+		<li><a href="/search/child/">Child</a></li>
+		<br>
+		<li><a href="/search/global/">Entire Data Base</a></li>
+	</ul>
+</body>
+</html>

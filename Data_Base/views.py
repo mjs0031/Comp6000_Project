@@ -3,7 +3,7 @@
 
 """ Django Package Imports """
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, render
 
 """ Internal Package Imports """
 from Data_Base.models import (Business, School,
@@ -35,7 +35,7 @@ from Data_Base.models import (Business, School,
  }
  """
 def homepage(request):
-    return render_to_response('homepage.html')
+    return render_to_response('landing.html')
 
 
 """
@@ -44,7 +44,7 @@ def homepage(request):
  }
  """
 def search_business(request):
-    return render_to_response('business.html')
+    return render_to_response('search_business.html')
 
 def ajax_search_business(request, search_string):
     found = True 
@@ -52,14 +52,14 @@ def ajax_search_business(request, search_string):
     if not results:
         results = Business.objects.all()
         found = False
-    return render_to_response('render_album.html', {
+    return render_to_response('render_business.html', {
                                 "results": results,
                                 "found": found,
                                 })
     
 
 def search_school(request):
-    return render_to_response('school.html')
+    return render_to_response('search_school.html')
 
 def ajax_search_school(request, search_string):
     found = True 
@@ -67,14 +67,14 @@ def ajax_search_school(request, search_string):
     if not results:
         results = School.objects.all()
         found = False
-    return render_to_response('render_album.html', {
+    return render_to_response('render_school.html', {
                                 "results": results,
                                 "found": found,
                                 })
     
 
 def search_person(request):
-    return render_to_response('person.html')
+    return render_to_response('search_person.html')
 
 def ajax_search_person(request, search_string):
     found = True 
@@ -82,14 +82,14 @@ def ajax_search_person(request, search_string):
     if not results:
         results = Person.objects.all()
         found = False
-    return render_to_response('render_album.html', {
+    return render_to_response('render_person.html', {
                                 "results": results,
                                 "found": found,
                                 })
     
 
 def search_child(request):
-    return render_to_response('child.html')
+    return render_to_response('search_child.html')
 
 def ajax_search_child(request, search_string):
     found = True 
@@ -97,26 +97,38 @@ def ajax_search_child(request, search_string):
     if not results:
         results = Child.objects.all()
         found = False
-    return render_to_response('render_album.html', {
+    return render_to_response('render_child.html', {
                                 "results": results,
                                 "found": found,
                                 })
     
 
 def search_global(request):
-    return render_to_response('global.html')
+    return render_to_response('search_global.html')
 
 def ajax_search_global(request, search_string):
+    found_b, found_s, found_p, found_c = True, True, True, True
     result_business = Business.objects.filter(name__startswith=search_string)
     result_school   = School.objects.filter(name__startswith=search_string)
     result_person   = Person.objects.filter(last_name__startswith=search_string)
     result_child    = Child.objects.filter(last_name__startswith=search_string)
-
-    return render_to_response('render_album.html', {
+    if (len(result_business) == 0):
+        found_b = False
+    if (len(result_school) == 0):
+        found_s = False
+    if (len(result_person) == 0):
+        found_p = False
+    if (len(result_child) == 0):
+        found_c = False
+    return render_to_response('render_global.html', {
                                 "result_business": result_business,
                                 "result_school": result_school,
                                 "result_person": result_person,
                                 "result_child": result_child,
+                                "found_b": found_b,
+                                "found_s": found_s,
+                                "found_p": found_p,
+                                "found_c": found_c,                                
                                 })
 
 
@@ -126,15 +138,21 @@ def ajax_search_global(request, search_string):
  }
  """    
 def specific_business(request, offset):
+    found    = True
     offset   = int(offset)
     business = Business.objects.get(pk=offset)
     people   = Person.objects.filter(business=business)
+    if (len(people) == 0):
+        found = False
     return render_to_response('specific_business.html', locals())
 
 def specific_school(request, offset):
+    found    = True
     offset   = int(offset)
     school   = School.objects.get(pk=offset)
     children = Child.objects.filter(school=school)
+    if (len(children) == 0):
+        found = False
     return render_to_response('specific_school.html', locals())
 
 def specific_person(request, offset):

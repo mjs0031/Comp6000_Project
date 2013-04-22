@@ -1,0 +1,37 @@
+<html xmlns = "http://www.w3.org/1999/xhtml">
+<head>
+</head>
+
+<body>
+
+	<p><i>
+	{% if found %}
+		<h3><i>The following match your search criteria:</i></h3> 
+	{% else %}
+		<h3><i>No matching business were found.</i></h3>
+		<br>
+		<h3><i>These are all current known businesses.</i></h3> 
+	{% endif %}
+	</i></p>
+
+	<br>
+
+	<br>
+	{% for business in results %}
+	<hr>
+	<table>
+		<tr><td width="250"><i>Business Name ::</i></td><td width="750"><a href="/business/{{ business.id }}">{{ business.name }}</a></td></tr>
+		<tr><td><i>Business ID ::</i></td><td>{{ business.id }}</td></tr>
+		<tr><td><i>Address ::</i></td><td>{{ business.address_line_one }}</td></tr>
+		<tr><td><i></i></td><td>{{ business.address_line_two }}</td></tr>
+		<tr><td><i></i></td><td>{{ business.city }}, {{business.state}} {{ business.zip_code }}</td></tr>		
+		<tr><td><i>Phone ::</i></td><td>{{ business.phone }}</td></tr>
+		<tr><td width="150"><i>Description ::</i></td><td>{{ business.business_description }}</td></tr>
+		<br><br>
+		<tr><td><i>Relevant Notes ::</i></td><td>{{ business.notes }}</td></tr>
+	</table>
+	<br>
+	{% endfor %}
+	
+</body>
+</html>	
