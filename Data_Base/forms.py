@@ -148,8 +148,7 @@ class ChildForm(forms.Form):
                     last_name  = self.cleaned_data['last_name'],
                     school     = self.cleaned_data['school'],               
                         )
-        results = self.cleaned_data['family'],
-        for i in results:
+        for i in self.cleaned_data['family']:
             pointer.family.add(i)
         pointer.save()
         return pointer
