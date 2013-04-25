@@ -18,7 +18,7 @@ from Data_Base.models import (Business, School, Person, Child)
               Adam Carter
               
  Version:     1.0
- Last Update: 2013-04-15
+ Last Update: 2013-04-25
  Update By:   Matthew J Swann
  
  Code for the database unittesting.
@@ -28,11 +28,11 @@ from Data_Base.models import (Business, School, Person, Child)
  """
  
 class Test(TestCase):
-    fixtures = ['Control/fixtures/json/database_testdata.json']
-    #fixtures = ['Control/fixtures/xml/2013_4_7_18_29_17.xml',
-    #            'Control/fixtures/xml/2013_4_7_18_29_21.xml',
-    #            'Control/fixtures/xml/2013_4_7_18_29_25.xml',
-    #            'Control/fixtures/xml/2013_4_7_18_29_30.xml']
+    #fixtures = ['Control/fixtures/json/database_testdata.json']
+    fixtures = ['Control/fixtures/xml/2013_4_25_18_54_41.xml',
+                'Control/fixtures/xml/2013_4_25_18_54_45.xml',
+                'Control/fixtures/xml/2013_4_25_18_54_48.xml',
+                'Control/fixtures/xml/2013_4_25_18_54_53.xml']
     
     """
      {

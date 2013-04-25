@@ -16,7 +16,7 @@ from django.contrib import admin
               Adam Carter
               
  Version:     1.0
- Last Update: 2013-04-20
+ Last Update: 2013-04-25
  Update By:   Matthew J Swann
  
  
@@ -57,5 +57,11 @@ urlpatterns = patterns('',
     url(r'^school/(\w+)/$', 'Data_Base.views.specific_school', name='specific_school'),
     url(r'^person/(\w+)/$', 'Data_Base.views.specific_person', name='specific_person'),    
     url(r'^child/(\w+)/$', 'Data_Base.views.specific_child', name='specific_child'),
+    
+    # AJAX QUERY OUTPUT
+   url(r'^xml_business/$', 'Data_Base.views.business_to_XML', name='business_to_xml'),
+   url(r'^xml_school/$', 'Data_Base.views.school_to_XML', name='school_to_xml'),
+   url(r'^xml_person/$', 'Data_Base.views.person_to_XML', name='person_to_xml'),
+   url(r'^xml_child/$', 'Data_Base.views.child_to_XML', name='child_to_xml'),
 
 )

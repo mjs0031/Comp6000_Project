@@ -8,7 +8,8 @@ from django.template import RequestContext
 
 """ Internal Package Imports """
 from Data_Base.models import (Business,     School,
-                              Person,       Child)
+                              Person,       Child,
+                              query_to_xml)
 from Data_Base.forms import  (BusinessForm, SchoolForm,
                               PersonForm,   ChildForm)
 
@@ -22,7 +23,7 @@ from Data_Base.forms import  (BusinessForm, SchoolForm,
               Adam Carter
               
  Version:     1.0
- Last Update: 2013-04-22
+ Last Update: 2013-04-25
  Update By:   Matthew J Swann
  
  Code for the website queries/control.
@@ -221,3 +222,28 @@ def specific_child(request, offset):
     offset = int(offset)
     child  = Child.objects.get(pk=offset)
     return render_to_response('specific_child.html', locals())
+
+"""
+ {
+  XML STREAM
+ }
+ """
+def business_to_XML(request):
+    business = Business.objects.get(pk=1)
+    business.table_to_string()
+    return render_to_response('landing.html')
+
+def school_to_XML(request):
+    school = School.objects.get(pk=1)
+    school.table_to_string()
+    return render_to_response('landing.html')
+
+def person_to_XML(request):
+    person = Person.objects.get(pk=1)
+    person.table_to_string()
+    return render_to_response('landing.html')
+
+def child_to_XML(request):
+    child = Child.objects.get(pk=1)
+    child.table_to_string()
+    return render_to_response('landing.html')
