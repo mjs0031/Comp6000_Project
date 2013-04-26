@@ -32,15 +32,15 @@ from Data_Base.models import (Business, School,
  BUSINESS Form
 """
 class BusinessForm(forms.Form):
-    name                 = forms.CharField(max_length=128)
-    address_line_one     = forms.CharField(max_length=128)
-    address_line_two     = forms.CharField(max_length=128, required=False)
-    city                 = forms.CharField(max_length=32)
-    state                = USStateField()
-    zip_code             = forms.CharField(max_length=10)    
-    phone                = forms.CharField(max_length=12, required=False)
-    business_description = forms.CharField(widget=forms.Textarea)
-    notes                = forms.CharField(widget=forms.Textarea)
+    name                 = forms.CharField(label='Business Name', max_length=128)
+    address_line_one     = forms.CharField(label='Address Line One', max_length=128)
+    address_line_two     = forms.CharField(label='Address Line Two', max_length=128, required=False)
+    city                 = forms.CharField(label='Address: City', max_length=32)
+    state                = USStateField(label='Address: State')
+    zip_code             = forms.CharField(label='Address: ZipCode',max_length=10)    
+    phone                = forms.CharField(label='Business Phone', max_length=12, required=False)
+    business_description = forms.CharField(label='Business Descript.',widget=forms.Textarea)
+    notes                = forms.CharField(label='Pertinent Notes', widget=forms.Textarea)
     
     """
      Saves the current form data as a business.
@@ -66,15 +66,15 @@ class BusinessForm(forms.Form):
  SCHOOL Form
 """            
 class SchoolForm(forms.Form):
-    name             = forms.CharField(max_length=128)
-    education_level  = forms.ChoiceField(choices=SCHOOL_SET, widget=forms.Select)
-    address_line_one = forms.CharField(max_length=128)
-    address_line_two = forms.CharField(max_length=128, required=False)
-    city             = forms.CharField(max_length=32)
-    state            = USStateField()
-    zip_code         = forms.CharField(max_length=10)    
-    phone            = forms.CharField(max_length=12, required=False)
-    notes            = forms.CharField(widget=forms.Textarea)
+    name             = forms.CharField(label='School Name', max_length=128)
+    education_level  = forms.ChoiceField(label='Education Level', choices=SCHOOL_SET, widget=forms.Select)
+    address_line_one = forms.CharField(label='Address Line One', max_length=128)
+    address_line_two = forms.CharField(label='Address Line Two', max_length=128, required=False)
+    city             = forms.CharField(label='Address: City', max_length=32)
+    state            = USStateField(label='Address: State')
+    zip_code         = forms.CharField(label='Address: ZipCode',max_length=10)    
+    phone            = forms.CharField(label='Primary Phone #',max_length=12, required=False)
+    notes            = forms.CharField(label='Pertinent Notes', widget=forms.Textarea)
     
     """
      Saves the current form data as a school.
@@ -100,14 +100,14 @@ class SchoolForm(forms.Form):
  PERSON Form
 """     
 class PersonForm(forms.Form):
-    first_name       = forms.CharField(max_length=128)
-    last_name        = forms.CharField(max_length=128)
-    business         = forms.ModelChoiceField(queryset=Business.objects.all())
-    address_line_one = forms.CharField(max_length=128)
-    address_line_two = forms.CharField(max_length=128, required=False)
-    city             = forms.CharField(max_length=32)
-    state            = USStateField()
-    zip_code         = forms.CharField(max_length=10)  
+    first_name       = forms.CharField(label='Person: Last Name', max_length=128)
+    last_name        = forms.CharField(label='Person: First Name' ,max_length=128)
+    business         = forms.ModelChoiceField(label='Associated Business', queryset=Business.objects.all())
+    address_line_one = forms.CharField(label='Address Line One',max_length=128)
+    address_line_two = forms.CharField(label='Address Line Two', max_length=128, required=False)
+    city             = forms.CharField(label='Address: City', max_length=32)
+    state            = USStateField(label='Address: State')
+    zip_code         = forms.CharField(label='Address: ZipCode',max_length=10)  
 
     """
      Saves the current form data as a person.
@@ -132,10 +132,10 @@ class PersonForm(forms.Form):
  CHILD Form
 """  
 class ChildForm(forms.Form):
-    first_name       = forms.CharField(max_length=128)
-    last_name        = forms.CharField(max_length=128)
-    school           = forms.ModelChoiceField(queryset=School.objects.all(), required=False)
-    family           = forms.ModelMultipleChoiceField(queryset=Person.objects.all(), required=False)
+    first_name       = forms.CharField(label='Child: First Name', max_length=128)
+    last_name        = forms.CharField(label='Child: Last Name',max_length=128)
+    school           = forms.ModelChoiceField(label='Child: School', queryset=School.objects.all(), required=False)
+    family           = forms.ModelMultipleChoiceField(label='Child: Family(+)',queryset=Person.objects.all(), required=False)
 
     """
      Saves the current form data as a child.
