@@ -21,7 +21,7 @@ from Data_Base.models import (Business, School,
               
  Version:     1.0
  Last Update: 2013-04-20
- Update By:   Matthew J Swann
+ Update By:   (Not Detailed.)
  
  Code for the website forms and inherent functionality.
 

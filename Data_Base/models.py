@@ -24,7 +24,7 @@ from Control.choice_lists import SCHOOL_SET
               
  Version:     1.0
  Last Update: 2013-04-25
- Update By:   Matthew J Swann
+ Update By:   (Not Detailed.)
  
  Code for the database tables and inherent functionality.
 
